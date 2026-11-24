@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, MoveDown } from "lucide-react";
@@ -15,6 +15,8 @@ import { FAQSection, NewsletterSection, WhoWeHelpSection, WhySavvySphereSection 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import PeopleFirstStory from "@/components/PeopleFirstStory";
 import PropertyMoveCalculator from "@/components/PropertyMoveCalculator";
+import Preloader from "@/components/Preloader";
+
 const photos = {
   hero: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=90",
   intro: "/images/family-next-chapter.webp",
@@ -34,58 +36,234 @@ function Eyebrow({ index, children }) {
   );
 }
 
-function Hero() {
+  
+function Hero({ ready = true }) {
   const ref = useRef(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 80]);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, reduceMotion ? 0 : 80]
+  );
+
+  const ease = [0.22, 1, 0.36, 1];
+
+  const fadeUp = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
+  const titleReveal = {
+    hidden: {
+      y: "110%",
+    },
+    visible: {
+      y: 0,
+    },
+  };
+
+  const animationState =
+    ready || reduceMotion ? "visible" : "hidden";
 
   return (
     <section className="hero" id="top" ref={ref}>
       <motion.div
         className="hero-image-mask"
-        initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)" }}
-        animate={{ clipPath: "inset(0 0 0 0)" }}
-        transition={{ duration: reduceMotion ? 0 : 1.5, ease: [0.76, 0, 0.24, 1] }}
+        initial={reduceMotion ? false : "hidden"}
+        animate={animationState}
+        variants={{
+          hidden: {
+            clipPath: "inset(0 0 100% 0)",
+          },
+          visible: {
+            clipPath: "inset(0 0 0 0)",
+          },
+        }}
+        transition={{
+          duration: reduceMotion ? 0 : 1.5,
+          ease: [0.76, 0, 0.24, 1],
+        }}
       >
-        <motion.div className="hero-image-parallax" style={{ y: imageY }}>
-          <Image src={photos.hero} alt="Contemporary residential architecture in a landscaped setting" fill priority sizes="100vw" />
+        <motion.div
+          className="hero-image-parallax"
+          style={{ y: imageY }}
+        >
+          <Image
+            src={photos.hero}
+            alt="Contemporary residential architecture in a landscaped setting"
+            fill
+            priority
+            sizes="100vw"
+          />
         </motion.div>
       </motion.div>
+
       <div className="hero-overlay" />
+
       <CursorGlow className="home-hero-cursor-glow" />
+
       <div className="hero-content">
-        <motion.div className="hero-kicker" initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : .5, delay: reduceMotion ? 0 : .35 }}>
+        <motion.div
+          className="hero-kicker"
+          variants={fadeUp}
+          initial={reduceMotion ? false : "hidden"}
+          animate={animationState}
+          transition={{
+            duration: reduceMotion ? 0 : 0.5,
+            delay: reduceMotion ? 0 : 0.25,
+            ease,
+          }}
+        >
           <span className="hero-kicker-rule" />
+
           A DIFFERENT PERSPECTIVE ON PROPERTY
         </motion.div>
+
         <h1 className="hero-title">
-          <span className="hero-title-line"><motion.span initial={reduceMotion ? false : { y: "110%" }} animate={{ y: 0 }} transition={{ delay: reduceMotion ? 0 : 0.35, duration: reduceMotion ? 0 : 0.9 }}>Finding the right</motion.span></span>
-          <span className="hero-title-line"><motion.span initial={reduceMotion ? false : { y: "110%" }} animate={{ y: 0 }} transition={{ delay: reduceMotion ? 0 : 0.48, duration: reduceMotion ? 0 : 0.9 }}>place begins with</motion.span></span>
-          <span className="hero-title-line"><motion.span initial={reduceMotion ? false : { y: "110%" }} animate={{ y: 0 }} transition={{ delay: reduceMotion ? 0 : 0.61, duration: reduceMotion ? 0 : 0.9 }}><em>the right guidance.</em></motion.span></span>
+          <span className="hero-title-line">
+            <motion.span
+              variants={titleReveal}
+              initial={reduceMotion ? false : "hidden"}
+              animate={animationState}
+              transition={{
+                delay: reduceMotion ? 0 : 0.35,
+                duration: reduceMotion ? 0 : 0.9,
+                ease,
+              }}
+            >
+              Finding the right
+            </motion.span>
+          </span>
+
+          <span className="hero-title-line">
+            <motion.span
+              variants={titleReveal}
+              initial={reduceMotion ? false : "hidden"}
+              animate={animationState}
+              transition={{
+                delay: reduceMotion ? 0 : 0.48,
+                duration: reduceMotion ? 0 : 0.9,
+                ease,
+              }}
+            >
+              place begins with
+            </motion.span>
+          </span>
+
+          <span className="hero-title-line">
+            <motion.span
+              variants={titleReveal}
+              initial={reduceMotion ? false : "hidden"}
+              animate={animationState}
+              transition={{
+                delay: reduceMotion ? 0 : 0.61,
+                duration: reduceMotion ? 0 : 0.9,
+                ease,
+              }}
+            >
+              <em>the right guidance.</em>
+            </motion.span>
+          </span>
         </h1>
-        <motion.p className="hero-description" initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : .5, delay: reduceMotion ? 0 : .95 }}>
+
+        <motion.p
+          className="hero-description"
+          variants={fadeUp}
+          initial={reduceMotion ? false : "hidden"}
+          animate={animationState}
+          transition={{
+            duration: reduceMotion ? 0 : 0.6,
+            delay: reduceMotion ? 0 : 0.95,
+            ease,
+          }}
+        >
           Thoughtful property guidance. Informed decisions.
-          <br />A better way forward.
+          <br />
+          A better way forward.
         </motion.p>
-        <motion.div className="hero-actions" initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : .5, delay: reduceMotion ? 0 : 1.1 }}>
-          <Link className="button button-light" href="/services">Explore our services <ArrowUpRight size={18} /></Link>
-          <Link className="text-link text-link-light" href="/contact">Speak with our team <ArrowUpRight size={17} /></Link>
+
+        <motion.div
+          className="hero-actions"
+          variants={fadeUp}
+          initial={reduceMotion ? false : "hidden"}
+          animate={animationState}
+          transition={{
+            duration: reduceMotion ? 0 : 0.6,
+            delay: reduceMotion ? 0 : 1.1,
+            ease,
+          }}
+        >
+          <Link
+            className="button button-light"
+            href="/services"
+          >
+            Explore our services
+            <ArrowUpRight size={18} />
+          </Link>
+
+          <Link
+            className="text-link text-link-light"
+            href="/contact"
+          >
+            Speak with our team
+            <ArrowUpRight size={17} />
+          </Link>
         </motion.div>
       </div>
-      <Link className="hero-scroll" href="#home-introduction"><MoveDown size={16} /> <span>SCROLL TO EXPLORE</span></Link>
-      <span className="hero-index">01 — SAVVYSPHERE</span>
+
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={{
+          opacity: ready || reduceMotion ? 1 : 0,
+        }}
+        transition={{
+          delay: reduceMotion ? 0 : 1.4,
+          duration: reduceMotion ? 0 : 0.6,
+        }}
+      >
+        <Link
+          className="hero-scroll"
+          href="#home-introduction"
+        >
+          <MoveDown size={16} />
+          <span>SCROLL TO EXPLORE</span>
+        </Link>
+
+        <span className="hero-index">
+          01 — SAVVYSPHERE
+        </span>
+      </motion.div>
     </section>
   );
 }
 
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <main>
-      <SiteHeader overHero />
-      <Hero />
+      {loading && (
+        <Preloader
+          onComplete={() => setLoading(false)}
+        />
+      )}
 
+      <SiteHeader overHero />
+
+      <Hero ready={!loading} />
       <Reveal as="section" className="about-section section-shell" id="home-introduction" amount={0.08} variant="left" duration={1.05}>
         <div className="about-visual">
           <ImageReveal className="about-image" src={photos.intro} alt="A family sharing a happy moment together in a welcoming home" />

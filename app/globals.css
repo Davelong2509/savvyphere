@@ -5496,6 +5496,7 @@ img {
 
 .testimonial-card-frame {
   position: relative;
+  overflow: hidden;
   min-height: 395px;
   padding: 1px;
   background: linear-gradient(135deg, rgba(234, 226, 238, .55), rgba(234, 226, 238, .08) 55%, rgba(234, 226, 238, .28));
@@ -5721,19 +5722,60 @@ img {
 }
 
 .testimonial-dots button {
-  width: 5px;
-  height: 5px;
+  position: relative;
+  width: 22px;
+  height: 28px;
   padding: 0;
   border: 0;
-  border-radius: 50%;
-  background: rgba(248, 247, 244, .32);
-  transition: width .3s ease, border-radius .3s ease, background .3s ease;
+  background: transparent;
+  transition: width .3s ease;
+}
+
+.testimonial-dots button::before,
+.testimonial-dot-fill {
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.testimonial-dots button::before {
+  content: "";
+  background: rgba(248, 247, 244, .25);
+}
+
+.testimonial-dot-fill {
+  display: block;
+  background: #e5cfa5;
+  transform-origin: left center;
 }
 
 .testimonial-dots button.is-active {
-  width: 22px;
-  border-radius: 5px;
-  background: #e5cfa5;
+  width: 40px;
+}
+
+.testimonial-timer-track {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  overflow: hidden;
+  background: rgba(234, 226, 238, .16);
+  pointer-events: none;
+}
+
+.testimonial-timer-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #b99abd, #e5cfa5);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
 }
 
 .testimonial-arrows {
@@ -5752,11 +5794,29 @@ img {
   transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
 }
 
-.testimonial-arrows button:hover {
+.testimonial-arrows button:not(:disabled):hover {
   transform: translateY(-2px);
   border-color: #e5cfa5;
   background: #e5cfa5;
   color: var(--aubergine);
+}
+
+.testimonial-arrows button.testimonial-play-toggle {
+  border-color: rgba(229, 207, 165, .55);
+  color: #e5cfa5;
+}
+
+.testimonial-arrows button.testimonial-play-toggle:not(:disabled):hover {
+  color: var(--aubergine);
+}
+
+.testimonial-arrows button:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.testimonial-card--live {
+  margin: 0;
 }
 
 .testimonials-bottom-rule {
@@ -5867,6 +5927,17 @@ img {
   .testimonial-controls {
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .testimonial-arrows button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .testimonial-dots {
+    flex-wrap: wrap;
   }
 
   .testimonials-bottom-rule {
@@ -8137,4 +8208,146 @@ html, body { overflow-x: clip; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ss-move *, .ss-move *::before, .ss-move *::after { transition: none !important; animation: none !important; }
+}
+/* =========================================
+   SAVVYSPHERE — SIGNATURE PRELOADER
+========================================= */
+
+.savvy-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f8f7f4;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.savvy-preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  padding: 24px;
+}
+
+.savvy-preloader-logo {
+  position: relative;
+  width: min(480px, 85vw);
+}
+
+.savvy-logo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.savvy-orbit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.savvy-preloader-tagline {
+  margin-top: 22px;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  line-height: 1.8;
+  text-align: center;
+
+  color: #745681;
+}
+
+.savvy-preloader-track {
+  position: relative;
+
+  width: 140px;
+  height: 2px;
+  margin-top: 30px;
+
+  background: #e5dce8;
+  overflow: hidden;
+}
+
+.savvy-preloader-progress {
+  width: 100%;
+  height: 100%;
+
+  background: #64206e;
+  transform-origin: left center;
+}
+
+.savvy-preloader-caption {
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+  right: 0;
+
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-align: center;
+
+  color: #745681;
+}
+
+@media (max-width: 600px) {
+  .savvy-preloader-logo {
+    width: min(340px, 85vw);
+  }
+
+  .savvy-preloader-tagline {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    margin-top: 16px;
+  }
+
+  .savvy-preloader-track {
+    width: 100px;
+    margin-top: 24px;
+  }
+
+  .savvy-preloader-caption {
+    font-size: 8px;
+    bottom: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .savvy-orbit {
+    display: none;
+  }
+}
+.savvy-animated-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.savvy-preloader-logo {
+  position: relative;
+  width: min(420px, 80vw);
+}
+
+.savvy-preloader {
+  background: #f8f5f2;
+}
+
+@media (max-width: 600px) {
+  .savvy-preloader-logo {
+    width: min(300px, 80vw);
+  }
 }

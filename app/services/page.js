@@ -5,7 +5,8 @@ import PageCTA from "@/components/PageCTA";
 import { ArrowUpRight } from "lucide-react";
 import ServiceExplorer from "@/components/ServiceExplorer";
 import { Reveal } from "@/components/Reveal";
-
+import TestimonialsSection from "@/components/TestimonialsSection";
+import FAQSection from "@/components/FAQSection";
 export const metadata = {
   title: "Our Services",
   description: "Explore SavvySphere's proposed property consultancy service areas."
@@ -53,8 +54,9 @@ export default function ServicesPage() {
           <p><strong>Client confirmation required:</strong> final service names, deliverables, fees, geographical coverage and any regulated or specialist activities must be confirmed before this page is treated as live commercial information.</p>
         </Reveal>
       </div>
-
+      <FAQSection />
       <PageCTA title={<>Not sure where to begin? <em>Let&apos;s talk.</em></>} description="A first conversation can help establish what kind of support may be appropriate." />
+      <NewsletterSection /> 
       <SiteFooter />
     </main>
   );
