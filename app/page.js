@@ -14,7 +14,7 @@ import CursorGlow from "@/components/CursorGlow";
 import { FAQSection, NewsletterSection, WhoWeHelpSection, WhySavvySphereSection } from "@/components";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import PeopleFirstStory from "@/components/PeopleFirstStory";
-
+import PropertyMoveCalculator from "@/components/PropertyMoveCalculator";
 const photos = {
   hero: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=90",
   intro: "/images/family-next-chapter.webp",
@@ -140,7 +140,10 @@ export default function Home() {
       <WhoWeHelpSection  />
      
       
-      {/* <PropertyReadinessChecklist /> */}
+      
+      <PropertyMoveCalculator
+        contactHref="/contact"
+      />
 
       <TestimonialsSection />
 

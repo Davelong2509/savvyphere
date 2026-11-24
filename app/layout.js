@@ -1,5 +1,4 @@
 import "./globals.css";
-import RouteTransition from "@/components/RouteTransition";
 
 export const metadata = {
   title: {
@@ -20,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body><RouteTransition>{children}</RouteTransition></body>
+      <body>{children}</body>
     </html>
   );
 }

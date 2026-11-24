@@ -25,7 +25,7 @@ export default function SiteFooter() {
             aria-label="SavvySphere — Home"
           >
             <Image
-              src="/images/savvysphere-logo-white.png"
+              src="/images/savvysphere-logo-color.png"
               alt="SavvySphere"
               width={1260}
               height={215}
