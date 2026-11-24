@@ -5,7 +5,7 @@ import PageCTA from "@/components/PageCTA";
 import { ArrowUpRight } from "lucide-react";
 import ServiceExplorer from "@/components/ServiceExplorer";
 import { Reveal } from "@/components/Reveal";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import NewsletterSection from "@/components/NewsletterSection";
 import FAQSection from "@/components/FAQSection";
 export const metadata = {
   title: "Our Services",
