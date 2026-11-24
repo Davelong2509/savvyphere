@@ -53,7 +53,7 @@ export default function AboutPage() {
 
       <FAQSection />
 
-      <PageCTA title={<>Let's begin with <em>a conversation.</em></>} description="Tell us what you are considering and what a helpful next step might look like." />
+      <PageCTA title={<>Let&apos;s begin with <em>a conversation.</em></>} description="Tell us what you are considering and what a helpful next step might look like." />
      
      <NewsletterSection />  
      <SiteFooter />

@@ -8,7 +8,7 @@ import SectionReveal from "./SectionReveal";
 
 export default function NewsletterSection({
   onSubscribe,
-  title = <>A more considered view of <em>what's next.</em></>,
+  title = <>A more considered view of <em>what&apos;s next.</em></>,
   description = "Receive occasional property perspectives, useful reading and SavvySphere updates.",
   insightsHref = "/insights"
 }) {
@@ -65,7 +65,7 @@ export default function NewsletterSection({
               </div>
               <p className="ssx-newsletter-privacy">Only connect this form after the mailing-list provider, consent wording and privacy details have been approved.</p>
               {status === "success" && <p className="ssx-newsletter-status" role="status"><CheckCircle2 size={15} /> Thank you. Your subscription was received.</p>}
-              {status === "error" && <p className="ssx-newsletter-status is-error" role="alert">We couldn't complete your subscription. Please try again.</p>}
+              {status === "error" && <p className="ssx-newsletter-status is-error" role="alert">We couldn&apos;t complete your subscription. Please try again.</p>}
             </form>
           ) : (
             <div className="ssx-newsletter-placeholder">

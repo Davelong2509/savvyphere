@@ -24,8 +24,8 @@ export default function TermsPage() {
       <Reveal as="section" id="page-content" className="legal-page section-shell" amount={0.08} variant="left" duration={1.05}>
         <span className="eyebrow-text">CLIENT LEGAL COPY REQUIRED</span>
         <h2>Terms awaiting <em>client approval.</em></h2>
-        <p>This page is a structural placeholder only. It does not create contractual terms and must not be published as a substitute for SavvySphere's approved terms and conditions.</p>
-        <p>The final copy should accurately describe the company's legal identity, services, scope and limitations, customer responsibilities, fees (where applicable), cancellation and complaints processes, intellectual property, liability provisions, governing law and contact details.</p>
+        <p>This page is a structural placeholder only. It does not create contractual terms and must not be published as a substitute for SavvySphere&apos;s approved terms and conditions.</p>
+        <p>The final copy should accurately describe the company&apos;s legal identity, services, scope and limitations, customer responsibilities, fees (where applicable), cancellation and complaints processes, intellectual property, liability provisions, governing law and contact details.</p>
         <p>All terms must reflect the actual business model and should be reviewed by an appropriately qualified legal adviser before publication.</p>
       </Reveal>
       <SiteFooter />

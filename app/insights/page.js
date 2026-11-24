@@ -41,7 +41,7 @@ export default function InsightsPage() {
         </Reveal>
       </div>
 
-      <PageCTA title={<>Have a question of your own? <em>Let's talk.</em></>} description="We would be glad to hear what you are thinking about." />
+      <PageCTA title={<>Have a question of your own? <em>Let&apos;s talk.</em></>} description="We would be glad to hear what you are thinking about." />
       <NewsletterSection />
       <FAQSection />
       

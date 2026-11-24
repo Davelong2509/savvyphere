@@ -57,7 +57,7 @@ export default async function InsightArticlePage({ params }) {
           <Link className="text-link" href="/insights">Explore more perspectives <ArrowUpRight size={17} /></Link>
         </div>
       </article>
-      <PageCTA title={<>Continue the conversation. <em>We're listening.</em></>} description="Tell us what you are considering and what you would like to understand." />
+      <PageCTA title={<>Continue the conversation. <em>We&apos;re listening.</em></>} description="Tell us what you are considering and what you would like to understand." />
       <SiteFooter />
     </main>
   );

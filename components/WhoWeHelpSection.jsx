@@ -84,7 +84,7 @@ export default function WhoWeHelpSection({
             );
           })}
         </div>
-        <p className="ssx-content-note">Audience descriptions are broad positioning copy and should be refined against SavvySphere's confirmed client profile.</p>
+        <p className="ssx-content-note">Audience descriptions are broad positioning copy and should be refined against SavvySphere&apos;s confirmed client profile.</p>
       </div>
     </section>
   );

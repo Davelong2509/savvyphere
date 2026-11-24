@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
 
         <Reveal as="section" className="process-note section-shell" amount={0.08} variant="right" duration={1.05}>
           <span className="eyebrow-text">A PRACTICAL NOTE</span>
-          <p>Property transactions may involve legal, financial, mortgage, surveying or other specialist advice. The final website must accurately describe SavvySphere's role and must not imply that it provides regulated professional advice unless this is confirmed and appropriately authorised.</p>
+          <p>Property transactions may involve legal, financial, mortgage, surveying or other specialist advice. The final website must accurately describe SavvySphere&apos;s role and must not imply that it provides regulated professional advice unless this is confirmed and appropriately authorised.</p>
         </Reveal>
       </div>
      <FAQSection />

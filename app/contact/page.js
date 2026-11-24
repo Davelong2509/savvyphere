@@ -16,7 +16,7 @@ export default function ContactPage() {
       <SiteHeader />
       <PageHero
         eyebrow="CONTACT SAVVYSPHERE"
-        title={<>Let's start with<br /><em>a conversation.</em></>}
+        title={<>Let&apos;s start with<br /><em>a conversation.</em></>}
         description="Tell us a little about what you are considering and the kind of guidance you are looking for."
         image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=88"
         imageAlt="Contemporary home architecture"
@@ -26,7 +26,7 @@ export default function ContactPage() {
       <div id="page-content">
         <Reveal as="section" className="contact-page-layout section-shell" amount={0.08} variant="right" duration={1.05}>
           <Reveal className="contact-page-copy">
-            <span className="eyebrow-text">WE'D LIKE TO HEAR FROM YOU</span>
+            <span className="eyebrow-text">WE&apos;D LIKE TO HEAR FROM YOU</span>
             <h2>Every good conversation begins with <em>a question.</em></h2>
             <p>Whether you are at the beginning of a property journey or considering your next step, use the form to outline what is on your mind.</p>
             <ContactSignal />

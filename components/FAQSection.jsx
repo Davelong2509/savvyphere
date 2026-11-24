@@ -152,7 +152,7 @@ export default function FAQSection({
 
           <div className="ssx-faq-foot">
             <span>{filteredItems.length} {filteredItems.length === 1 ? "ANSWER" : "ANSWERS"}</span>
-            <span>CAN'T FIND WHAT YOU NEED?</span>
+            <span>CAN&apos;T FIND WHAT YOU NEED?</span>
             <Link href={contactHref}>ASK SAVVYSPHERE <ArrowUpRight size={13} /></Link>
           </div>
         </SectionReveal>

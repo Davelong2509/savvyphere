@@ -54,7 +54,7 @@ export default function ServicesPage() {
         </Reveal>
       </div>
 
-      <PageCTA title={<>Not sure where to begin? <em>Let's talk.</em></>} description="A first conversation can help establish what kind of support may be appropriate." />
+      <PageCTA title={<>Not sure where to begin? <em>Let&apos;s talk.</em></>} description="A first conversation can help establish what kind of support may be appropriate." />
       <SiteFooter />
     </main>
   );
